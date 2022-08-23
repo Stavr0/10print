@@ -1,6 +1,7 @@
 /**********************************************
-		10 print Classic v0.1
+		10 print Classic v0.2
 		josip.kalebic@gmail.com
+		With changes from 8BST
 ***********************************************/
 .var CHROUT = $ffd2
 .var BASIC_RND = $e097
@@ -15,15 +16,11 @@
 mainProg: {		
 
 loop:
-
 		jsr BASIC_RND
-		lda $8c    //$8b - $8f
-		and #%00000001
-		tax
-		lda chars,x
+		lda $00
+		adc #$cd 
 		jsr CHROUT
-		jmp loop
+		bcc loop
 }
 
 //-----------------------------------------------------
-chars: .byte $cd,$ce
